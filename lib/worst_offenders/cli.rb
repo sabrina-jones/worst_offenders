@@ -22,10 +22,7 @@ class WorstOffenders::CLI
   end
 
   def list_reviews
-     puts <<-DOC
-      1. first review
-      2. second review
-    DOC
+    puts "Below are the Top 3 most 'overly postive'endorsments in order of severity"
     @reviews = WorstOffenders::Review.today
   end
 
