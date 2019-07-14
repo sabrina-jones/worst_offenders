@@ -15,4 +15,27 @@ class WorstOffenders::Review
    [review_1, review_2]
   end
 
+  def self.scrape
+
+    doc = Nokogiri::HTML(open("https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-review-23685/"))
+    
+    offender_reviews = Array.new
+    reviews = doc.css("div.review-entry") #data for all reviews on the page 
+    
+
+    reviews.each do |review|
+      
+       offender_review = {
+    
+        heading: review.css("h3.no-format").text.delete('\"'),
+        user:    review.css("span.italic").text.delete('- '),
+        content: review.css("p.font-16.review-content").text
+      }
+
+      offender_reviews << offender_review
+    
+    end
+      binding.pry
+  end 
+
 end
