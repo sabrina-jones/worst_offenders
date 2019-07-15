@@ -17,7 +17,7 @@ class WorstOffenders::Review
 
   def self.scrape
 
-    doc = Nokogiri::HTML(open("https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-review-23685/"))
+    doc = Nokogiri::HTML(open("http://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page1/?filter=ALL_REVIEWS#link", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'chrome'))
 
     offender_reviews = Array.new
     reviews = doc.css("div.review-entry") #data for all reviews on the page
@@ -26,8 +26,12 @@ class WorstOffenders::Review
     last_page = 5
 
    while page <= last_page
-      pagination_url = "https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-review-23685/page#{page}/"
-      pagination_doc = Nokogiri::HTML(open(pagination_url))
+      pagination_url = "http://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page#{page}/?filter=ALL_REVIEWS#link/"
+      pagination_doc = Nokogiri::HTML(open(pagination_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'chrome'))
+      if page == 2
+        binding.pry
+      end
+
       pagination_reviews = pagination_doc.css("div.review-entry")
 
       puts pagination_url
