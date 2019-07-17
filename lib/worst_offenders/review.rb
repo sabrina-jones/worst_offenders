@@ -42,12 +42,23 @@ class WorstOffenders::Review
             content: review.css("p.font-16.review-content").text
           }
 
-          offender_reviews << offender_review
-          puts "Added #{offender_review[:heading]}"
+
+          #puts "Added #{offender_review[:heading]}"
+
+          if offender_review[:heading].include? ("Best car buying experience")
+              binding.pry
+              puts "we made it"
+              puts "Added #{offender_review[:heading]}"
+              #binding.pry
+              if offender_reviews.length <=2
+                 offender_reviews << offender_review
+              end
+          end
         end
         page += 1
      end
       binding.pry
+      offender_reviews
   end
 
 end
