@@ -27,7 +27,7 @@ class WorstOffenders::CLI
     @reviews = WorstOffenders::Review.today
 
       @reviews.each.with_index(1) do |review, index|
-        puts "#{index}. #{review.heading} - #{review.name}"
+        puts "#{index}. #{review.heading} - #{review.user} - #{review.content}"
       end
   end
 

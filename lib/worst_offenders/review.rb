@@ -1,18 +1,20 @@
 class WorstOffenders::Review
-  attr_accessor :heading, :name
+  attr_accessor :heading, :user, :content
 
   def self.today
     #return instances of top offender reviews
 
-   review_1 = self.new
-   review_1.heading  = "Best car shop"
-   review_1.name = "Sue Brown"
+   #review_1 = self.new
+   #review_1.heading  = "Best car shop"
+   #review_1.name = "Sue Brown"
 
-   review_2 = self.new
-   review_2.heading = "No other like it!"
-   review_2.name = "Bill Jones"
+   #review_2 = self.new
+   #review_2.heading = "No other like it!"
+   #review_2.name = "Bill Jones"
 
-   [review_1, review_2]
+   #[review_1, review_2]
+   self.scrape
+   #binding.pry
   end
 
   def self.scrape
@@ -31,7 +33,7 @@ class WorstOffenders::Review
 
       pagination_reviews = pagination_doc.css("div.review-entry")
 
-      puts pagination_url
+      #puts pagination_url
 
       pagination_reviews.each do |review|
 
@@ -46,9 +48,9 @@ class WorstOffenders::Review
           #puts "Added #{offender_review[:heading]}"
 
           if offender_review[:heading].include? ("Best car buying experience")
-              binding.pry
-              puts "we made it"
-              puts "Added #{offender_review[:heading]}"
+              #binding.pry
+              #puts "we made it"
+              #puts "Added #{offender_review[:heading]}"
               #binding.pry
               if offender_reviews.length <=2
                  offender_reviews << offender_review
@@ -57,8 +59,26 @@ class WorstOffenders::Review
         end
         page += 1
      end
-      binding.pry
-      offender_reviews
+      #binding.pry
+      #offender_reviews
+      review_1 = self.new
+      review_1.heading  = offender_reviews[0][:heading]
+      review_1.user = offender_reviews[0][:user]
+      review_1.content = offender_reviews[0][:content]
+
+      review_2 = self.new
+      review_2.heading  = offender_reviews[1][:heading]
+      review_2.user = offender_reviews[1][:user]
+      review_2.content = offender_reviews[1][:content]
+
+      review_3 = self.new
+      review_3.heading  = offender_reviews[2][:heading]
+      review_3.user = offender_reviews[2][:user]
+      review_3.content = offender_reviews[2][:content]
+
+      #binding.pry
+      [review_1, review_2, review_3]
+
   end
 
 end
