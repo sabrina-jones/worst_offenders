@@ -24,10 +24,11 @@ class WorstOffenders::CLI
   def list_reviews
     puts "Below are the Top 3 most 'overly postive'endorsments in order of severity"
 
-    @reviews = WorstOffenders::Review.today
+    @reviews = WorstOffenders::Review.top_offenders
 
       @reviews.each.with_index(1) do |review, index|
-        puts "#{index}. #{review.heading} - #{review.user} - #{review.content}"
+        puts "#{index}. #{review.heading} - #{review.user} "
+        puts "#{review.content}"
       end
   end
 
