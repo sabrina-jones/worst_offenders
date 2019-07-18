@@ -2,7 +2,7 @@ class WorstOffenders::Review
   attr_accessor :heading, :user, :content
 
  def self.top_offenders
-    #sorted by username
+
     sort_top3 = self.scrape
     sort_top3.sort_by! { |sort_top3| sort_top3.user }
 

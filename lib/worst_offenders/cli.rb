@@ -3,13 +3,12 @@ class WorstOffenders::CLI
   def call
     puts "Worst offenders for overly positive reviews"
     start
-    #list_reviews
   end
 
   def start
     input = nil
     while input != "exit"
-      puts "Would you liket to view the Top 3 offenders or the criteria (y/n/ exit to quit) ?"
+      puts "Would you like to view the Top 3 offenders of submitting overly positive reviews (y to view top 3/n to view list criteria/ exit to quit) ?"
       input = gets.strip.downcase
       case input
       when "y"
@@ -34,8 +33,9 @@ class WorstOffenders::CLI
 
   def list_criteria
      puts <<-DOC
-      1. have 5 stars
-      2. have all CAPS
+      1. They are among the most recent reviewers
+      2. Their review contains the phrase "Best car buying experience"
+      3. Their usernames are in alphabetical order going from (A - Z)
     DOC
   end
 
