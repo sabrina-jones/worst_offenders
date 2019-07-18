@@ -5,6 +5,10 @@ RSpec.describe WorstOffenders do
 
 describe "Review" do
 
+  it "can be called on with no errors" do
+   expect {WorstOffenders::Review}.to_not raise_error
+ end
+
   describe "#scrape" do
 
   it "has a Nokogiri url for scrapping the page that returns a HTML doc" do
@@ -21,7 +25,22 @@ describe "Review" do
    end
   end
 
+  it "stored reviews must include the phrase 'Best car buying experience'" do
+    WorstOffenders::Review.scrape.each.with_index(1) do |review, index|
+    expect(review.heading).to include("Best car buying experience")
+  end
+ end
+
+  it "scrapes a heading, a user, and content of a review" do
+    WorstOffenders::Review.scrape.each.with_index(1) do |review, index|
+    expect(review.heading).not_to be nil
+    expect(review.user).not_to be nil
+    expect(review.content).not_to be nil
+  end
+  end
+
   describe "#top_offenders" do
+
   it "is a class method that returns the top 3 offenders sorted by username" do
     scraped_reviews = WorstOffenders::Review.top_offenders
     expect(scraped_reviews).to be_a(Array)
@@ -35,5 +54,4 @@ describe "Review" do
   end
 
  end
-
 end
