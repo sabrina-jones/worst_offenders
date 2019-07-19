@@ -1,8 +1,6 @@
 # WorstOffenders
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/worst_offenders`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view the Top 3 Worst Offenders of providing overly positive reviews for McKaig Chevrolet Buick. "Overly positive" endorsments are defined as having been among the most recent reviews on the first 5 pages of the website, they must contain the phrase "Best car buying experience" in the heading of their review and they are ranked as most severe to least severe by user as those users with usernames earlier in the alphabet are higher offender of being overly positive. A review has a heading, user, and content.
 
 ## Installation
 
@@ -22,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+run ./bin/worst-offenders
+
+The user will be welcomed to the CLI and asked what they would like to do:
+Welcome to the CLI - Worst offenders for overly positive reviews - McKaig Chevrolet Buick
+
+Would you like to view the Top 3 offenders of submitting overly positive reviews (y to view top 3/n to view list criteria/ exit to quit) ?
+
+Ex. if the user inputs "y" a list of the top 3 reviews will appear.
+
+Ex. if the user inputs "n" a list of the criteria from being on the list will appear.
+
+Ex. if the user inputs "exit" will exit the cli.
+
 
 ## Development
 

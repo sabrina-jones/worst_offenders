@@ -25,8 +25,8 @@ class WorstOffenders::Review
 
       pagination_reviews.each do |review|
 
+          #each review has a heading, user and content for our purposes
           offender_review = {
-
             heading: review.css("h3.no-format").text.delete('\"'),
             user:    review.css("span.italic").text.delete('- '),
             content: review.css("p.font-16.review-content").text

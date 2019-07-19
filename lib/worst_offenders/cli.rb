@@ -1,7 +1,7 @@
 class WorstOffenders::CLI
 
   def call
-    puts "Worst offenders for overly positive reviews"
+    puts "Welcome to the CLI - Worst offenders for overly positive reviews - McKaig Chevrolet Buick"
     start
   end
 
@@ -33,7 +33,7 @@ class WorstOffenders::CLI
 
   def list_criteria
      puts <<-DOC
-      1. They are among the most recent reviewers
+      1. They are among the most recent reviewers that appear on the website
       2. Their review contains the phrase "Best car buying experience"
       3. Their usernames are in alphabetical order going from (A - Z)
     DOC
