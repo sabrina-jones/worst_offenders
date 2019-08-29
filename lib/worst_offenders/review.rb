@@ -18,7 +18,7 @@ class WorstOffenders::Review
 
    while page <= last_page
      #to scrape the first 5 pages
-      pagination_url = "http://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page#{page}/?filter=ALL_REVIEWS#link/"
+      pagination_url = "http://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/page#{page}" #/?filter=ALL_REVIEWS#link/
       pagination_doc = Nokogiri::HTML(open(pagination_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'chrome'))
 
       pagination_reviews = pagination_doc.css("div.review-entry")
@@ -33,7 +33,7 @@ class WorstOffenders::Review
           }
 
           #only store in array if meets the "best buying experience criteria"
-          if offender_review[:heading].include? ("Best car buying experience")
+          if offender_review[:heading].include?("Best car buying experience") || offender_review[:heading].include?("Best experience")
               if offender_reviews.length <=2
                  offender_reviews << offender_review
               end
