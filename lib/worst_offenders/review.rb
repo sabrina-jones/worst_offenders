@@ -1,6 +1,21 @@
 class WorstOffenders::Review
   attr_accessor :heading, :user, :content
 
+  #make a class method that accepts the created array of reviews from the scraper
+  # this class method will iterate over the review array and create new review objects of reviews
+  #and the cli class can ask the review class for all reviews
+  #cli will communicate with review and not scraper
+  # initialize method for handling info from scraper in review
+
+  #1 make it work/efficient/make pretty
+
+ #scraped_reviews = WorstOffenders::Scrape.scrape.offender_reviews
+
+ def self.get_reviews
+=
+
+ end
+
  def self.top_offenders
 
     sort_top3 = self.scrape
